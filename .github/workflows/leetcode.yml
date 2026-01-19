@@ -1,0 +1,41 @@
+name: LeetCode Daily Check
+
+on:
+  schedule:
+    # 12:00 AM IST = 18:30 UTC
+    - cron: "30 14 * * *"
+    - cron: "30 18 * * *"
+    - cron: "00 19 * * *"
+    - cron: "30 19 * * *"
+    - cron: "00 20 * * *"
+
+
+  workflow_dispatch: {}
+
+jobs:
+  run-cron:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run LeetCode checker
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LEETCODE_USERNAME: ${{ secrets.LEETCODE_USERNAME }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: |
+          python lc.py

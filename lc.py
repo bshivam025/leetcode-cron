@@ -79,12 +79,10 @@ if __name__ == "__main__":
 
     if not solved_today():
         send_email()
-
-        if now >= 12:  # after 12 PM
-            send_telegram(
-                "🚨 LEETCODE ALERT 🚨\n\n"
-                "You have NOT solved a problem today.\n"
-                "Your streak is at risk.\n\n"
-                "DO ONE NOW."
-            )
+        send_telegram(
+            "🚨 LEETCODE ALERT 🚨\n\n"
+            "You have NOT solved a problem today.\n"
+            "Your streak is at risk.\n\n"
+            "DO ONE NOW."
+        )
 
