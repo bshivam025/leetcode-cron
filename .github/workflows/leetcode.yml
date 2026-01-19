@@ -3,6 +3,7 @@ name: LeetCode Daily Check
 on:
   schedule:
     # 12:00 AM IST = 18:30 UTC
+    - cron: "18 10 * * *"
     - cron: "30 14 * * *"
     - cron: "30 18 * * *"
     - cron: "00 19 * * *"
