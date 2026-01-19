@@ -78,7 +78,7 @@ if __name__ == "__main__":
     now = datetime.datetime.now().hour
 
     if not solved_today():
-        send_email()
+        # send_email()
         send_telegram(
             "🚨 LEETCODE ALERT 🚨\n\n"
             "You have NOT solved a problem today.\n"
